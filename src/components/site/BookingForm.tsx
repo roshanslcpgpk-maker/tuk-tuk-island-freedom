@@ -8,7 +8,7 @@ import { btn, Reveal } from "./ui";
 
 const field = "h-12 w-full border-0 border-b border-input bg-transparent px-0 text-base text-foreground placeholder:text-muted-foreground/70 focus:border-primary focus:ring-0 focus:outline-none transition-colors";
 
-function Field({ label, error, children, className }: { label: string; error?: string; children: ReactNode; className?: string }) {
+function Field({ label, error, children, className }: { label: string; error?: string | undefined; children: ReactNode; className?: string }) {
   return (
     <label className={cn("block", className)}>
       <span className="eyebrow text-[0.65rem] text-muted-foreground">{label}</span>

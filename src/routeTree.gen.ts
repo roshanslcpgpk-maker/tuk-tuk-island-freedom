@@ -10,33 +10,73 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as MotorbikesRouteImport } from './routes/motorbikes'
+import { Route as TukTuksRouteImport } from './routes/tuk-tuks'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MotorbikesRoute = MotorbikesRouteImport.update({
+  id: '/motorbikes',
+  path: '/motorbikes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TukTuksRoute = TukTuksRouteImport.update({
+  id: '/tuk-tuks',
+  path: '/tuk-tuks',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/motorbikes': typeof MotorbikesRoute
+  '/tuk-tuks': typeof TukTuksRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/motorbikes': typeof MotorbikesRoute
+  '/tuk-tuks': typeof TukTuksRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/motorbikes': typeof MotorbikesRoute
+  '/tuk-tuks': typeof TukTuksRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/about' | '/contact' | '/motorbikes' | '/tuk-tuks'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/about' | '/contact' | '/motorbikes' | '/tuk-tuks'
+  id: '__root__' | '/' | '/about' | '/contact' | '/motorbikes' | '/tuk-tuks'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  ContactRoute: typeof ContactRoute
+  MotorbikesRoute: typeof MotorbikesRoute
+  TukTuksRoute: typeof TukTuksRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +88,43 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/motorbikes': {
+      id: '/motorbikes'
+      path: '/motorbikes'
+      fullPath: '/motorbikes'
+      preLoaderRoute: typeof MotorbikesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tuk-tuks': {
+      id: '/tuk-tuks'
+      path: '/tuk-tuks'
+      fullPath: '/tuk-tuks'
+      preLoaderRoute: typeof TukTuksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  ContactRoute: ContactRoute,
+  MotorbikesRoute: MotorbikesRoute,
+  TukTuksRoute: TukTuksRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
