@@ -6,7 +6,7 @@
 export const SITE = {
   name: "Windy Tour",
   tagline: "Feel the Freedom. Explore Sri Lanka.",
-  whatsappNumber: (import.meta.env.VITE_WHATSAPP_NUMBER as string | undefined) ?? "",
+  whatsappNumber: (import.meta.env["VITE_WHATSAPP_NUMBER"] as string | undefined) ?? "",
   phoneDisplay: "+94 XX XXX XXXX",
   email: "hello@windytour.com",
   location: "Sri Lanka",
